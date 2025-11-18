@@ -18,7 +18,7 @@ CATEGORIES = [
 ]
 
 DIFFICULTIES = ["Easy", "Medium", "Hard"]
-YEARS = ["Freshman", "Sophomore", "Junior", "Senior", "Grad", "Faculty"]
+YEARS = ["Freshman", "Sophomore", "Junior", "Senior", "Grad", "Faculty", "Public"]
 
 # =====================================================
 # CREATE LOG FILE IF NEEDED
