@@ -1,0 +1,8 @@
+timestamp,category,difficulty,correct,year,participant_id
+2025-11-18T13:34:25.782124,Historical Migration,Medium,1,Senior,1
+2025-11-18T13:34:32.388828,Local Migration,Medium,0,Senior,1
+2025-11-18T13:34:53.162928,Borders,Hard,0,Faculty,2
+2025-11-18T13:35:02.270955,Migrant Experiences / Myths,Hard,1,Faculty,2
+2025-11-18T13:35:30.934201,Local Migration,Hard,0,Sophomore,3
+2025-11-18T13:35:47.196467,Historical Migration,Hard,0,Faculty,4
+2025-11-18T13:41:58.278398,Civil Rights and Duties,Medium,1,Junior,5

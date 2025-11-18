@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Migration Game Dashboard</title>
+    <style>
+        body { font-family: Arial; max-width: 1000px; margin: auto; padding: 20px; }
+        h1 { text-align: center; }
+        nav a { margin-right: 20px; }
+        .card { padding: 10px 15px; border: 1px solid #ccc; border-radius: 8px; margin: 10px 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 8px; font-size: 14px; }
+        th { background: #f2f2f2; }
+        .correct { color: green; font-weight: bold; }
+        .incorrect { color: red; font-weight: bold; }
+        form.inline { display: inline-block; margin-right: 15px; }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .nav-btn {
+            padding: 10px 18px;
+            background: #007bff;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+            background: #0056b3;
+            border: 2px solid white;
+        }
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="/log" class="nav-btn {% if request.path == '/log' %}active{% endif %}">Log Data</a>
+  <a href="/dashboard" class="nav-btn {% if request.path == '/dashboard' %}active{% endif %}">Dashboard</a>
+</nav>
+
+<h1>Migration Game Dashboard</h1>
+
+<div class="card">
+    <form method="GET" class="inline">
+        <label>Filter by Year:</label>
+        <select name="year" onchange="this.form.submit()">
+            {% for y in years %}
+                <option value="{{y}}" {% if selected_year == y %}selected{% endif %}>{{y}}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <form method="GET" class="inline">
+        <input type="hidden" name="year" value="{{selected_year}}">
+        <label>Filter by Category:</label>
+        <select name="category" onchange="this.form.submit()">
+            {% for c in categories %}
+                <option value="{{c}}" {% if selected_category == c %}selected{% endif %}>{{c}}</option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+
+{% if empty %}
+    <p>No data recorded yet for this filter.</p>
+{% else %}
+
+<div class="card">
+    <h2>Overview</h2>
+    <p><strong>Total entries:</strong> {{ total }}</p>
+    <p><strong>Overall accuracy:</strong> {{ accuracy }}%</p>
+</div>
+
+<div class="card">
+    <h2>All Entries (Grouped by participant)</h2>
+
+    {% for g in grouped_entries %}
+        <div class="card" style="margin-bottom:12px;">
+            <h3>Participant: {{ g.participant_id }}</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Year</th>
+                        <th>Category</th>
+                        <th>Difficulty</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for row in g.rows %}
+                    <tr>
+                        <td>{{ row.timestamp }}</td>
+                        <td>{{ row.year }}</td>
+                        <td>{{ row.category }}</td>
+                        <td>{{ row.difficulty }}</td>
+                        <td>
+                            {% if row.correct_text == 'Correct' %}
+                                <span class="correct">Correct</span>
+                            {% else %}
+                                <span class="incorrect">Incorrect</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endfor %}
+
+{% endif %}
+
+</body>
+</html>
