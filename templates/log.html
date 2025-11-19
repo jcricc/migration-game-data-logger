@@ -6,10 +6,10 @@
         body { font-family: Arial; max-width: 700px; margin: auto; padding: 20px; }
         h1 { text-align: center; }
         .section { margin-bottom: 20px; }
-        button { 
-            padding: 10px 20px; 
-            margin: 5px; 
-            font-size: 18px; 
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 18px;
             border-radius: 8px;
             border: none;
             background: #007bff;
@@ -20,14 +20,23 @@
         .success { color: green; font-size: 20px; margin-top: 15px; text-align: center; }
         nav a { margin-right: 20px; }
         .hint { color: #666; font-size: 14px; text-align: center; margin-top: 8px; }
-        .navbar { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
         .nav-btn {
-            padding: 10px 18px; background: #007bff; color: white;
-            font-weight: bold; border-radius: 8px; text-decoration: none;
+            padding: 10px 18px;
+            background: #093a6e;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
             transition: background 0.3s ease, transform 0.2s ease;
         }
-        .nav-btn:hover { background: #0056b3; transform: translateY(-2px); }
-        .nav-btn.active { background: #0056b3; border: 2px solid white; }
+        .nav-btn:hover { background: #3586dc; transform: translateY(-2px); }
+        .nav-btn.active { background: #3586dc; border: 2px solid white; }
     </style>
 </head>
 
@@ -54,31 +63,38 @@
     <input type="hidden" name="correct" value="{{ prev_correct|default('') }}">
     <input type="hidden" name="year" value="{{ prev_year|default('') }}">
     <input type="hidden" name="participant_id" value="{{ participant_id|default('') }}">
+    <input type="hidden" name="skip_year" value="{{ skip_year|default('0') }}">
 
     <div style="text-align:center; margin-bottom:12px;">
-        <small>Active participant id: <strong>{{ participant_id if participant_id else 'None (will create)' }}</strong></small>
+        <small>Active participant id:
+            <strong>{{ participant_id if participant_id else 'None (will create)' }}</strong>
+        </small>
     </div>
 
+    {# ================= STEP 1: CATEGORY ================= #}
     {% if step == 1 %}
         <div class="section">
             <h2>1) Choose Category</h2>
             {% for c in categories %}
                 <label style="display:block; margin:8px 0;">
-                    <input type="radio" name="category_new" value="{{c}}" required> {{ loop.index }}. {{c}}
+                    <input type="radio" name="category_new" value="{{c}}" required>
+                    {{ loop.index }}. {{c}}
                 </label>
             {% endfor %}
-            <p class="hint">Press number keys or click an option.</p>
+            <p class="hint">Press number keys or click an option, then press Enter.</p>
             <div style="text-align:center; margin-top:12px;">
                 <button type="submit" name="action" value="next">Next ►</button>
             </div>
         </div>
 
+    {# ================= STEP 2: DIFFICULTY ================= #}
     {% elif step == 2 %}
         <div class="section">
             <h2>2) Choose Difficulty</h2>
             {% for d in difficulties %}
                 <label style="display:block; margin:8px 0;">
-                    <input type="radio" name="difficulty_new" value="{{d}}" required> {{ loop.index }}. {{d}}
+                    <input type="radio" name="difficulty_new" value="{{d}}" required>
+                    {{ loop.index }}. {{d}}
                 </label>
             {% endfor %}
             <div style="text-align:center; margin-top:12px;">
@@ -87,6 +103,7 @@
             </div>
         </div>
 
+    {# ================= STEP 3: CORRECT / INCORRECT ================= #}
     {% elif step == 3 %}
         <div class="section">
             <h2>3) Was the answer correct?</h2>
@@ -102,33 +119,53 @@
             </div>
         </div>
 
+    {# ================= STEP 4: STUDENT YEAR ONLY ================= #}
     {% elif step == 4 %}
         <div class="section">
-            <h2>4) Student Year (final)</h2>
+            <h2>4) Student Year</h2>
             {% for y in years %}
                 <label style="display:block; margin:8px 0;">
-                    <input type="radio" name="year_new" value="{{y}}" required> {{ loop.index }}. {{y}}
+                    <input type="radio" name="year_new" value="{{y}}" required>
+                    {{ loop.index }}. {{y}}
                 </label>
             {% endfor %}
+            <p class="hint">Pick a year, then press Enter to review.</p>
+            <div style="text-align:center; margin-top:12px;">
+                <button type="submit" name="action" value="back">◄ Back</button>
+                <button type="submit" name="action" value="next">Next ►</button>
+            </div>
+        </div>
+
+    {# ================= STEP 5: REVIEW + PARTICIPANT CHOICE ================= #}
+    {% elif step == 5 %}
+        <div class="section">
+            <h2>5) Play again?</h2>
 
             <div style="margin-top:18px;">
+                <label><strong>After submitting:</strong></label><br>
+                <label style="display:block; margin:6px 0;">
+                    <input type="radio" name="participant_choice" value="same">
+                    1. Continue with the same player
+                </label>
+                <label style="display:block; margin:6px 0;">
+                    <input type="radio" name="participant_choice" value="new">
+                    2. Create a new player and reset form
+                </label>
+            </div>
+
+            <div style="margin-top:10px;">
                 <h3>Review</h3>
                 <p><strong>Category:</strong> {{ prev_category }}</p>
                 <p><strong>Difficulty:</strong> {{ prev_difficulty }}</p>
-                <p><strong>Correct:</strong> {% if prev_correct == '1' %}Yes{% elif prev_correct == '0' %}No{% else %}—{% endif %}</p>
-                <p><strong>Participant ID:</strong> {{ participant_id if participant_id else '(will create)' }}</p>
-            </div>
-
-            <div style="margin-top:12px;">
-                <label><strong>After submitting, do:</strong></label><br>
-                <label>
-                    <input type="radio" name="next_action" value="continue_same" checked>
-                    {{ years|length + 1 }}. Continue with the same participant (default)
-                </label><br>
-                <label>
-                    <input type="radio" name="next_action" value="new_and_fill">
-                    {{ years|length + 2 }}. Create a new participant and start full form
-                </label>
+                <p><strong>Correct:</strong>
+                    {% if prev_correct == '1' %}Yes
+                    {% elif prev_correct == '0' %}No
+                    {% else %}—{% endif %}
+                </p>
+                <p><strong>Year:</strong> {{ prev_year or 'Unknown' }}</p>
+                <p><strong>Participant ID:</strong>
+                    {{ participant_id if participant_id else '(will create)' }}
+                </p>
             </div>
 
             <div style="text-align:center; margin-top:12px;">
@@ -140,13 +177,13 @@
 </form>
 
 <script>
-// Handle numeric shortcuts
 document.addEventListener("keydown", (e) => {
-    const num = parseInt(e.key);
     const step = parseInt("{{ step }}");
+    const key = e.key;
 
-    // Process 1–9 numeric keys for selection
-    if (num && num > 0) {
+    // --- Number shortcuts (1–9) ---
+    const num = parseInt(key);
+    if (num && num > 0 && num < 10) {
         let buttons = [];
 
         if (step === 1) {
@@ -156,42 +193,34 @@ document.addEventListener("keydown", (e) => {
         } else if (step === 3) {
             buttons = document.querySelectorAll('input[name="correct_new"]');
         } else if (step === 4) {
-            const yearButtons = document.querySelectorAll('input[name="year_new"]');
-            const actionButtons = document.querySelectorAll('input[name="next_action"]');
-
-            if (num <= yearButtons.length) {
-                yearButtons[num - 1].click();
-            } else {
-                const actionIndex = num - yearButtons.length - 1;
-                if (actionIndex >= 0 && actionIndex < actionButtons.length) {
-                    actionButtons[actionIndex].click();
-                }
-            }
-            return;
+            buttons = document.querySelectorAll('input[name="year_new"]');
+        } else if (step === 5) {
+            buttons = document.querySelectorAll('input[name="participant_choice"]');
         }
-        if (num <= buttons.length) {
+
+        if (buttons.length && num <= buttons.length) {
             buttons[num - 1].click();
         }
     }
 
-    // Handle Enter key
-    if (e.key === "Enter") {
-        const form = e.target.closest("form");
+    // --- Enter key: Next / Submit ---
+    if (key === "Enter") {
+        const selected = document.querySelector("input[type=radio]:checked");
         const nextBtn = document.querySelector('button[name="action"][value="next"]');
         const submitBtn = document.querySelector('button[name="action"][value="submit"]');
 
-        // Check if one of the inputs has been selected
-        const selected = document.querySelector("input[type=radio]:checked");
-
-        if (submitBtn && selected) {
-            // On final step with a selection → submit
-            submitBtn.click();
-        } else if (nextBtn && selected) {
-            // On intermediate step with a selection → move next
-            nextBtn.click();
-        } else {
+        if (!selected) {
             alert("Please make a selection before continuing.");
+            e.preventDefault();
+            return;
         }
+
+        if (step === 5 && submitBtn) {
+            submitBtn.click();
+        } else if (nextBtn) {
+            nextBtn.click();
+        }
+
         e.preventDefault();
     }
 });

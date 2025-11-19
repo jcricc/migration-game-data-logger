@@ -22,7 +22,7 @@
 
         .nav-btn {
             padding: 10px 18px;
-            background: #007bff;
+            background: #093a6e;
             color: white;
             font-weight: bold;
             border-radius: 8px;
@@ -31,12 +31,12 @@
         }
 
         .nav-btn:hover {
-            background: #0056b3;
+            background: #3586dc;
             transform: translateY(-2px);
         }
 
         .nav-btn.active {
-            background: #0056b3;
+            background: #3586dc;
             border: 2px solid white;
         }
 
@@ -47,6 +47,9 @@
 <nav class="navbar">
   <a href="/log" class="nav-btn {% if request.path == '/log' %}active{% endif %}">Log Data</a>
   <a href="/dashboard" class="nav-btn {% if request.path == '/dashboard' %}active{% endif %}">Dashboard</a>
+  <a href="/export/csv" class="nav-btn">Download CSV</a>
+  <a href="/export/excel" class="nav-btn">Download Excel</a>
+  <a href="/delete" class="nav-btn" style="background:rgb(230, 13, 13);">Delete Data</a>
 </nav>
 
 <h1>Migration Game Dashboard</h1>

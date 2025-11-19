@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete All Data</title>
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: auto; padding: 20px; }
+        h1 { text-align: center; color: darkred; }
+        .card { padding: 20px; border: 1px solid #ccc; border-radius: 8px; margin-top: 20px; }
+        .danger-btn {
+            background: red; color: white; padding: 10px 20px;
+            border: none; font-size: 18px; border-radius: 8px;
+            cursor: pointer;
+        }
+        .back-btn {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .nav-btn {
+            padding: 10px 18px;
+            background: #007bff;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .nav-btn.active {
+            background: #0056b3;
+            border: 2px solid white;
+        }
+        .nav-btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        input[type=text] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #aaa;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="/log" class="nav-btn">Log Data</a>
+  <a href="/dashboard" class="nav-btn">Dashboard</a>
+</nav>
+
+<h1>Delete All Data</h1>
+
+{% if deleted %}
+    <div class="card">
+        <h2 style="color:green;">✔ All data was deleted.</h2>
+        <p>Your CSV has been reset.</p>
+        <div class="back-btn">
+            <a href="/dashboard" class="nav-btn">Return to Dashboard</a>
+        </div>
+    </div>
+{% else %}
+    <div class="card">
+        <p style="margin-bottom:15px;">
+            <strong style="color:red;">Warning:</strong> This will permanently erase all logged data.
+        </p>
+
+        {% if error %}
+            <p style="color:red; font-weight:bold;">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+            <p>Type the delete code to confirm:</p>
+            <input type="text" name="confirm_text" placeholder="Enter delete code">
+
+            <div style="margin-top:20px;">
+                <button class="danger-btn" type="submit">Delete All Data</button>
+            </div>
+        </form>
+    </div>
+{% endif %}
+
+</body>
+</html>
