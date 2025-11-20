@@ -1,1 +1,110 @@
 timestamp,category,difficulty,correct,year,participant_id
+2025-11-20T16:00:25.445182,Statistics / Miscellaneous,Medium,Yes,Faculty,1
+2025-11-20T16:00:37.17258,Borders,Hard,Yes,Junior,2
+2025-11-20T16:05:13.261923,Borders,Easy,No,Senior,3
+2025-11-20T16:13:12.368116,Borders,Easy,Yes,Sophomore,4
+2025-11-20T16:17:48.193353,Historical Migration,Medium,Yes,Junior,5
+2025-11-20T16:19:17.529795,Statistics / Miscellaneous,Medium,Yes,Junior,5
+2025-11-20T16:20:11.655036,Migrant Experiences / Myths,Medium,Yes,Junior,6
+2025-11-20T16:22:05.015521,Borders,Easy,Yes,Sophomore,7
+2025-11-20T16:23:29.8786,Local Migration,Medium,No,Faculty,8
+2025-11-20T16:24:59.963411,Migrant Experiences / Myths,Medium,Yes,Sophomore,9
+2025-11-20T16:27:16.485929,Civil Rights and Duties,Hard,No,Sophomore,10
+2025-11-20T16:33:17.191177,Migrant Experiences / Myths,Easy,Yes,Freshman,11
+2025-11-20T16:33:31.275392,Statistics / Miscellaneous,Medium,Yes,Sophomore,12
+2025-11-20T16:33:57.606131,Borders,Easy,Yes,Faculty,13
+2025-11-20T16:37:20.945001,Borders,Medium,No,Faculty,13
+2025-11-20T16:39:53.003366,Historical Migration,Medium,No,Faculty,14
+2025-11-20T16:41:23.233753,Migrant Experiences / Myths,Medium,Yes,Freshman,15
+2025-11-20T16:50:07.17474,Civil Rights and Duties,Medium,Yes,Junior,16
+2025-11-20T16:53:57.985942,Local Migration,Easy,Yes,Junior,17
+2025-11-20T16:58:01.973506,Borders,Medium,Yes,Junior,18
+2025-11-20T17:00:20.394445,Civil Rights and Duties,Hard,Yes,Senior,19
+2025-11-20T17:04:56.98937,Migrant Experiences / Myths,Medium,Yes,Freshman,20
+2025-11-20T17:09:07.728711,Local Migration,Medium,No,Sophomore,21
+2025-11-20T17:10:53.155896,Civil Rights and Duties,Easy,Yes,Sophomore,22
+2025-11-20T17:14:52.293709,Migrant Experiences / Myths,Easy,Yes,Junior,23
+2025-11-20T17:17:53.632215,Civil Rights and Duties,Hard,Yes,Freshman,24
+2025-11-20T17:19:02.819833,Civil Rights and Duties,Hard,No,Faculty,25
+2025-11-20T17:30:08.437434,Historical Migration,Easy,No,Junior,26
+2025-11-20T17:31:34.229814,Borders,Easy,Yes,Senior,27
+2025-11-20T17:44:26.08931,Borders,Medium,Yes,Freshman,28
+2025-11-20T17:45:20.013318,Statistics / Miscellaneous,Easy,Yes,Sophomore,29
+2025-11-20T17:54:15.662517,Borders,Medium,No,Sophomore,30
+2025-11-20T17:54:44.062258,Statistics / Miscellaneous,Medium,Yes,Sophomore,31
+2025-11-20T17:59:05.892271,Migrant Experiences / Myths,Easy,Yes,Faculty,32
+2025-11-20T18:01:08.864297,Borders,Hard,Yes,Senior,33
+2025-11-20T18:03:54.272433,Borders,Hard,No,Sophomore,34
+2025-11-20T18:05:16.684971,Statistics / Miscellaneous,Medium,Yes,Sophomore,34
+2025-11-20T18:09:47.411234,Migrant Experiences / Myths,Easy,Yes,Junior,35
+2025-11-20T18:11:14.850453,Statistics / Miscellaneous,Easy,No,Faculty,36
+2025-11-20T18:13:16.043414,Civil Rights and Duties,Medium,Yes,Senior,37
+2025-11-20T18:14:33.372505,Civil Rights and Duties,Hard,Yes,Junior,38
+2025-11-20T18:16:13.243836,Borders,Hard,No,Junior,38
+2025-11-20T18:17:03.767872,Migrant Experiences / Myths,Hard,Yes,Junior,39
+2025-11-20T18:18:23.401038,Borders,Hard,No,Junior,39
+2025-11-20T18:19:13.460454,Local Migration,Medium,No,Junior,40
+2025-11-20T18:23:29.320016,Statistics / Miscellaneous,Medium,No,Freshman,41
+2025-11-20T18:26:01.123458,Statistics / Miscellaneous,Medium,No,Senior,42
+2025-11-20T18:28:11.200325,Migrant Experiences / Myths,Medium,Yes,Senior,43
+2025-11-20T18:30:17.353799,Statistics / Miscellaneous,Medium,Yes,Sophomore,44
+2025-11-20T18:32:25.031075,Historical Migration,Easy,Yes,Freshman,45
+2025-11-20T18:33:09.230396,Civil Rights and Duties,Easy,Yes,Freshman,46
+2025-11-20T18:34:19.421423,Civil Rights and Duties,Medium,Yes,Freshman,47
+2025-11-20T18:35:40.410292,Civil Rights and Duties,Hard,Yes,Freshman,48
+2025-11-20T18:36:40.5032,Civil Rights and Duties,Medium,Yes,Sophomore,49
+2025-11-20T18:38:52.064375,Borders,Medium,Yes,Senior,50
+2025-11-20T18:40:15.023482,Migrant Experiences / Myths,Hard,No,Senior,51
+2025-11-20T18:42:55.000773,Historical Migration,Medium,No,Junior,52
+2025-11-20T18:45:00.003057,Historical Migration,Easy,Yes,Senior,53
+2025-11-20T18:53:06.699155,Civil Rights and Duties,Medium,Yes,Junior,54
+2025-11-20T18:53:26.002239,Borders,Hard,No,Junior,55
+2025-11-20T18:54:31.306772,Historical Migration,Hard,Yes,Junior,56
+2025-11-20T18:54:46.505128,Statistics / Miscellaneous,Medium,Yes,Junior,57
+2025-11-20T18:58:01.031887,Borders,Medium,Yes,Senior,58
+2025-11-20T18:59:10.617233,Migrant Experiences / Myths,Medium,Yes,Sophomore,59
+2025-11-20T19:00:20.839343,Statistics / Miscellaneous,Medium,No,Faculty,60
+2025-11-20T19:07:18.60533,Migrant Experiences / Myths,Medium,Yes,Junior,61
+2025-11-20T19:16:45.800317,Migrant Experiences / Myths,Easy,Yes,Junior,62
+2025-11-20T19:20:23.105264,Historical Migration,Hard,No,Junior,63
+2025-11-20T19:20:58.701421,Statistics / Miscellaneous,Hard,No,Junior,64
+2025-11-20T19:24:13.136662,Borders,Medium,Yes,Senior,65
+2025-11-20T20:08:32.080936,Migrant Experiences / Myths,Medium,Yes,Sophomore,66
+2025-11-20T20:10:15.214403,Historical Migration,Easy,Yes,Senior,67
+2025-11-20T20:11:38.221066,Migrant Experiences / Myths,Easy,No,Junior,68
+2025-11-20T20:11:53.921805,Borders,Easy,Yes,Junior,69
+2025-11-20T20:23:04.651781,Migrant Experiences / Myths,Medium,Yes,Junior,70
+2025-11-20T20:30:46.618667,Borders,Medium,Yes,Freshman,71
+2025-11-20T20:36:10.933647,Historical Migration,Medium,Yes,Junior,72
+2025-11-20T20:48:45.404429,Civil Rights and Duties,Medium,Yes,Junior,73
+2025-11-20T20:51:03.649049,Civil Rights and Duties,Hard,No,Sophomore,74
+2025-11-20T20:51:27.241362,Migrant Experiences / Myths,Medium,Yes,Sophomore,75
+2025-11-20T20:51:59.496709,Historical Migration,Easy,Yes,Freshman,76
+2025-11-20T20:54:02.101087,Local Migration,Medium,No,Junior,77
+2025-11-20T20:54:48.45938,Statistics / Miscellaneous,Medium,Yes,Junior,78
+2025-11-20T20:55:39.885296,Statistics / Miscellaneous,Hard,No,Junior,79
+2025-11-20T21:00:33.71648,Migrant Experiences / Myths,Medium,Yes,Junior,80
+2025-11-20T21:02:31.763688,Statistics / Miscellaneous,Medium,Yes,Senior,81
+2025-11-20T21:05:03.85215,Civil Rights and Duties,Easy,No,Junior,82
+2025-11-20T21:06:37.70124,Local Migration,Hard,No,Sophomore,83
+2025-11-20T21:07:34.246759,Migrant Experiences / Myths,Hard,Yes,Sophomore,84
+2025-11-20T21:11:06.611715,Historical Migration,Medium,Yes,Senior,85
+2025-11-20T21:15:44.087614,Migrant Experiences / Myths,Medium,Yes,Sophomore,86
+2025-11-20T21:18:17.717186,Statistics / Miscellaneous,Easy,Yes,Freshman,87
+2025-11-20T21:24:13.68004,Borders,Easy,Yes,Public,88
+2025-11-20T21:25:10.869341,Borders,Medium,Yes,Freshman,89
+2025-11-20T21:25:54.985661,Civil Rights and Duties,Medium,Yes,Freshman,90
+2025-11-20T21:31:24.348688,Borders,Medium,No,Senior,91
+2025-11-20T21:36:50.608771,Statistics / Miscellaneous,Hard,Yes,Senior,92
+2025-11-20T21:40:11.122434,Borders,Easy,Yes,Freshman,93
+2025-11-20T21:41:13.897202,Historical Migration,Easy,Yes,Freshman,94
+2025-11-20T21:42:19.079645,Local Migration,Easy,No,Freshman,95
+2025-11-20T21:43:37.490197,Local Migration,Easy,No,Sophomore,96
+2025-11-20T21:46:42.123125,Migrant Experiences / Myths,Hard,No,Junior,97
+2025-11-20T21:48:30,Civil Rights and Duties,Medium,Yes,Freshman,98
+2025-11-20T21:49:55,Statistics / Miscellaneous,Hard,No,Freshman,99
+2025-11-20T21:50:32.4412,Borders,Medium,Yes,Junior,100
+2025-11-20T21:51:14.88234,Historical Migration,Easy,No,Sophomore,101
+2025-11-20T21:52:03.118992,Civil Rights and Duties,Medium,Yes,Sophomore,102
+2025-11-20T21:52:55.441882,Local Migration,Hard,No,Sophomore,103
+2025-11-20T21:53:41.764553,Migrant Experiences / Myths,Easy,Yes,Senior,104

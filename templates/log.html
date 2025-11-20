@@ -37,6 +37,74 @@
         }
         .nav-btn:hover { background: #3586dc; transform: translateY(-2px); }
         .nav-btn.active { background: #3586dc; border: 2px solid white; }
+
+        /* =======================
+   MOBILE OPTIMIZATION
+   ======================= */
+    @media (max-width: 600px) {
+    
+        body {
+            max-width: 100%;
+            padding: 12px;
+            font-size: 16px;
+        }
+    
+        h1, h2, h3 {
+            font-size: 22px;
+            text-align: center;
+        }
+    
+        /* Navbar becomes stacked */
+        .navbar {
+            flex-direction: column;
+            gap: 10px;
+        }
+    
+        .nav-btn {
+            width: 100%;
+            font-size: 16px;
+            padding: 12px;
+            text-align: center;
+        }
+    
+        /* Make buttons full width and bigger tap targets */
+        button, .submit-btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    
+        /* Radio labels fixed for readability */
+        label {
+            font-size: 18px;
+            display: block;
+            padding: 6px 0;
+        }
+    
+        /* Tables become scrollable instead of broken */
+        table {
+            font-size: 14px;
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+    
+        th, td {
+            padding: 6px;
+        }
+    
+        /* Cards get slightly larger spacing */
+        .card {
+            padding: 15px;
+        }
+    
+        /* Small success text tweaks */
+        .success {
+            font-size: 18px;
+        }
+    }
+
     </style>
 </head>
 
