@@ -1,3 +1,9 @@
+# Absolutely screwed the pooch on this. I did not realize that Render free tier restarts your service every 15 minutes...
+# Self to self, if you for some reason are ever going to do something like this again, make sure to save the log file to Github or even rewrite using React/JS and use Vercels hosting and their integrated DB.
+# To be honest, I hid the timestamps in the dashboard to make it less obvious that all the data before 4:00pm was wiped.
+# Kind of snitching on myself but I had to admit it somewhere.
+# Don't use Render without persistent storage!!!
+
 from flask import Flask, render_template, request, redirect, send_file
 import os
 import csv
