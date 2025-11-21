@@ -42,31 +42,31 @@
    MOBILE OPTIMIZATION
    ======================= */
     @media (max-width: 600px) {
-    
+
         body {
             max-width: 100%;
             padding: 12px;
             font-size: 16px;
         }
-    
+
         h1, h2, h3 {
             font-size: 22px;
             text-align: center;
         }
-    
+
         /* Navbar becomes stacked */
         .navbar {
             flex-direction: column;
             gap: 10px;
         }
-    
+
         .nav-btn {
             width: 100%;
             font-size: 16px;
             padding: 12px;
             text-align: center;
         }
-    
+
         /* Make buttons full width and bigger tap targets */
         button, .submit-btn {
             width: 100%;
@@ -74,14 +74,14 @@
             font-size: 18px;
             margin-top: 10px;
         }
-    
+
         /* Radio labels fixed for readability */
         label {
             font-size: 18px;
             display: block;
             padding: 6px 0;
         }
-    
+
         /* Tables become scrollable instead of broken */
         table {
             font-size: 14px;
@@ -89,16 +89,16 @@
             overflow-x: auto;
             white-space: nowrap;
         }
-    
+
         th, td {
             padding: 6px;
         }
-    
+
         /* Cards get slightly larger spacing */
         .card {
             padding: 15px;
         }
-    
+
         /* Small success text tweaks */
         .success {
             font-size: 18px;
@@ -117,182 +117,6 @@
 
 <h1>Migration Game Logger</h1>
 
-{% if success %}
-    <p class="success">✔ Entry Saved!</p>
-{% endif %}
-{% if error %}
-    <p class="success" style="color:darkred">{{ error }}</p>
-{% endif %}
-
-<form method="POST" novalidate>
-    <input type="hidden" name="step" value="{{ step }}">
-    <input type="hidden" name="category" value="{{ prev_category|default('') }}">
-    <input type="hidden" name="difficulty" value="{{ prev_difficulty|default('') }}">
-    <input type="hidden" name="correct" value="{{ prev_correct|default('') }}">
-    <input type="hidden" name="year" value="{{ prev_year|default('') }}">
-    <input type="hidden" name="participant_id" value="{{ participant_id|default('') }}">
-    <input type="hidden" name="skip_year" value="{{ skip_year|default('0') }}">
-
-    <div style="text-align:center; margin-bottom:12px;">
-        <small>Active participant id:
-            <strong>{{ participant_id if participant_id else 'None (will create)' }}</strong>
-        </small>
-    </div>
-
-    {# ================= STEP 1: CATEGORY ================= #}
-    {% if step == 1 %}
-        <div class="section">
-            <h2>1) Choose Category</h2>
-            {% for c in categories %}
-                <label style="display:block; margin:8px 0;">
-                    <input type="radio" name="category_new" value="{{c}}" required>
-                    {{ loop.index }}. {{c}}
-                </label>
-            {% endfor %}
-            <p class="hint">Press number keys or click an option, then press Enter.</p>
-            <div style="text-align:center; margin-top:12px;">
-                <button type="submit" name="action" value="next">Next ►</button>
-            </div>
-        </div>
-
-    {# ================= STEP 2: DIFFICULTY ================= #}
-    {% elif step == 2 %}
-        <div class="section">
-            <h2>2) Choose Difficulty</h2>
-            {% for d in difficulties %}
-                <label style="display:block; margin:8px 0;">
-                    <input type="radio" name="difficulty_new" value="{{d}}" required>
-                    {{ loop.index }}. {{d}}
-                </label>
-            {% endfor %}
-            <div style="text-align:center; margin-top:12px;">
-                <button type="submit" name="action" value="back">◄ Back</button>
-                <button type="submit" name="action" value="next">Next ►</button>
-            </div>
-        </div>
-
-    {# ================= STEP 3: CORRECT / INCORRECT ================= #}
-    {% elif step == 3 %}
-        <div class="section">
-            <h2>3) Was the answer correct?</h2>
-            <label style="display:block; margin:8px 0;">
-                <input type="radio" name="correct_new" value="1" required> 1. Correct
-            </label>
-            <label style="display:block; margin:8px 0;">
-                <input type="radio" name="correct_new" value="0" required> 2. Incorrect
-            </label>
-            <div style="text-align:center; margin-top:12px;">
-                <button type="submit" name="action" value="back">◄ Back</button>
-                <button type="submit" name="action" value="next">Next ►</button>
-            </div>
-        </div>
-
-    {# ================= STEP 4: STUDENT YEAR ONLY ================= #}
-    {% elif step == 4 %}
-        <div class="section">
-            <h2>4) Student Year</h2>
-            {% for y in years %}
-                <label style="display:block; margin:8px 0;">
-                    <input type="radio" name="year_new" value="{{y}}" required>
-                    {{ loop.index }}. {{y}}
-                </label>
-            {% endfor %}
-            <p class="hint">Pick a year, then press Enter to review.</p>
-            <div style="text-align:center; margin-top:12px;">
-                <button type="submit" name="action" value="back">◄ Back</button>
-                <button type="submit" name="action" value="next">Next ►</button>
-            </div>
-        </div>
-
-    {# ================= STEP 5: REVIEW + PARTICIPANT CHOICE ================= #}
-    {% elif step == 5 %}
-        <div class="section">
-            <h2>5) Play again?</h2>
-
-            <div style="margin-top:18px;">
-                <label><strong>After submitting:</strong></label><br>
-                <label style="display:block; margin:6px 0;">
-                    <input type="radio" name="participant_choice" value="same">
-                    1. Continue with the same player
-                </label>
-                <label style="display:block; margin:6px 0;">
-                    <input type="radio" name="participant_choice" value="new">
-                    2. Create a new player and reset form
-                </label>
-            </div>
-
-            <div style="margin-top:10px;">
-                <h3>Review</h3>
-                <p><strong>Category:</strong> {{ prev_category }}</p>
-                <p><strong>Difficulty:</strong> {{ prev_difficulty }}</p>
-                <p><strong>Correct:</strong>
-                    {% if prev_correct == '1' %}Yes
-                    {% elif prev_correct == '0' %}No
-                    {% else %}—{% endif %}
-                </p>
-                <p><strong>Year:</strong> {{ prev_year or 'Unknown' }}</p>
-                <p><strong>Participant ID:</strong>
-                    {{ participant_id if participant_id else '(will create)' }}
-                </p>
-            </div>
-
-            <div style="text-align:center; margin-top:12px;">
-                <button type="submit" name="action" value="back">◄ Back</button>
-                <button class="submit-btn" type="submit" name="action" value="submit">Submit ✓</button>
-            </div>
-        </div>
-    {% endif %}
-</form>
-
-<script>
-document.addEventListener("keydown", (e) => {
-    const step = parseInt("{{ step }}");
-    const key = e.key;
-
-    // --- Number shortcuts (1–9) ---
-    const num = parseInt(key);
-    if (num && num > 0 && num < 10) {
-        let buttons = [];
-
-        if (step === 1) {
-            buttons = document.querySelectorAll('input[name="category_new"]');
-        } else if (step === 2) {
-            buttons = document.querySelectorAll('input[name="difficulty_new"]');
-        } else if (step === 3) {
-            buttons = document.querySelectorAll('input[name="correct_new"]');
-        } else if (step === 4) {
-            buttons = document.querySelectorAll('input[name="year_new"]');
-        } else if (step === 5) {
-            buttons = document.querySelectorAll('input[name="participant_choice"]');
-        }
-
-        if (buttons.length && num <= buttons.length) {
-            buttons[num - 1].click();
-        }
-    }
-
-    // --- Enter key: Next / Submit ---
-    if (key === "Enter") {
-        const selected = document.querySelector("input[type=radio]:checked");
-        const nextBtn = document.querySelector('button[name="action"][value="next"]');
-        const submitBtn = document.querySelector('button[name="action"][value="submit"]');
-
-        if (!selected) {
-            alert("Please make a selection before continuing.");
-            e.preventDefault();
-            return;
-        }
-
-        if (step === 5 && submitBtn) {
-            submitBtn.click();
-        } else if (nextBtn) {
-            nextBtn.click();
-        }
-
-        e.preventDefault();
-    }
-});
-</script>
-
-</body>
-</html>
+<h2 style="text-align:center; margin-top:100px; color:#444;">
+    Game Over, Check the Dashboard for Results!
+</h2>
